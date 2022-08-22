@@ -3,36 +3,23 @@ import React, { useState } from 'react';
 //@ts-ignore
 import styles from './App.module.css'
 import Button, {ButtonType} from './Components/Button';
-
-// const TABS_NAME = [
-//   {
-//     key: 'all',
-//     title: 'All',
-//   },
-//   {
-//     key: 'all',
-//     title: 'All',
-//   },
-//   {
-//     key: 'all',
-//     title: 'All',
-//   },
-// ]
+import Title from './Components/Title';
+import UserName from './Components/UserName';
 
 
-// const [isActive, setActive] = useState(true)
 
 export const App = () => {
   return (
     <div className={styles.app}>
-      <Button type={ButtonType.Primary} title={'Primary'} onClick={() => alert('Primary')}/>
+      {/* <Button type={ButtonType.Primary} title={'Primary'} onClick={() => alert('Primary')}/>
       <Button type={ButtonType.Secondary} title={'Secondary'} onClick={() => alert('Secondary')} />
       <Button type={ButtonType.Error} title={'Error'} onClick={() => alert('Error')} />
       <Button type={ButtonType.Primary} title={'Primary'} onClick={() => alert('Primary')} disabled/>
       <Button type={ButtonType.Secondary} title={'Secondary'} onClick={() => alert('Secondary')}  disabled/>
-      <Button type={ButtonType.Error} title={'Error'} onClick={() => alert('Error')} disabled/>
-      {/* {TABS_NAME.map((tab) => <div key={tab.key}>{tab.title} </div>)} */}
-            
+      <Button type={ButtonType.Error} title={'Error'} onClick={() => alert('Error')} disabled/> */}
+      <Title className={styles.title} title={'Sign Up'} />
+      <UserName className={styles.UserName} title={'Artem Malkin'} />
+
       </div>
   );
 }
