@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 //@ts-ignore
 import styles from './App.module.css'
 import Button, {ButtonType} from './Components/Button';
+import Input from './Components/Input';
 
 // const TABS_NAME = [
 //   {
@@ -21,8 +22,12 @@ import Button, {ButtonType} from './Components/Button';
 
 
 // const [isActive, setActive] = useState(true)
+function App() {
+const [value, setValue] = useState<string>('');
+const onChange = (inputValue:string) => {
+  setValue(inputValue)
+}
 
-export const App = () => {
   return (
     <div className={styles.app}>
       <Button type={ButtonType.Primary} title={'Primary'} onClick={() => alert('Primary')}/>
@@ -32,7 +37,11 @@ export const App = () => {
       <Button type={ButtonType.Secondary} title={'Secondary'} onClick={() => alert('Secondary')}  disabled/>
       <Button type={ButtonType.Error} title={'Error'} onClick={() => alert('Error')} disabled/>
       {/* {TABS_NAME.map((tab) => <div key={tab.key}>{tab.title} </div>)} */}
-            
+
+
+
+      <Input placeholder={'Placeholder'} onChange={onChange} value={value}/>
+
       </div>
   );
 }
