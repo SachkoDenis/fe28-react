@@ -45,4 +45,5 @@
 .disabled {
     background-color: #e8e8e8;
     color: #8D8E97;
+    pointer-events: none;
 }
