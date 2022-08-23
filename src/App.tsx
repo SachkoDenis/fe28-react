@@ -4,23 +4,6 @@ import React, { useState } from 'react';
 import styles from './App.module.css'
 import Button, {ButtonType} from './Components/Button';
 
-// const TABS_NAME = [
-//   {
-//     key: 'all',
-//     title: 'All',
-//   },
-//   {
-//     key: 'all',
-//     title: 'All',
-//   },
-//   {
-//     key: 'all',
-//     title: 'All',
-//   },
-// ]
-
-
-// const [isActive, setActive] = useState(true)
 
 export const App = () => {
   return (
@@ -31,7 +14,6 @@ export const App = () => {
       <Button type={ButtonType.Primary} title={'Primary'} onClick={() => alert('Primary')} disabled/>
       <Button type={ButtonType.Secondary} title={'Secondary'} onClick={() => alert('Secondary')}  disabled/>
       <Button type={ButtonType.Error} title={'Error'} onClick={() => alert('Error')} disabled/>
-      {/* {TABS_NAME.map((tab) => <div key={tab.key}>{tab.title} </div>)} */}
             
       </div>
   );
