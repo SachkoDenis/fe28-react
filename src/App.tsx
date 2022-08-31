@@ -5,7 +5,8 @@ import styles from './App.module.css'
 import Button, {ButtonType} from './Components/Button';
 import classNames from 'classnames';
 import CardsList from './Components/CardsList';
-
+import SignIn from './Pages/SignIn';
+import SignUp from './Pages/SignUp';
 
 export const App = () => {
   return (
@@ -16,7 +17,9 @@ export const App = () => {
       <Button type={ButtonType.Primary} title={'Primary'} onClick={() => alert('Primary')} disabled/>
       <Button type={ButtonType.Secondary} title={'Secondary'} onClick={() => alert('Secondary')}  disabled/>
       <Button type={ButtonType.Error} title={'Error'} onClick={() => alert('Error')} disabled/> */}
-       <CardsList/>     
+       <CardsList/>
+       <SignUp/>  
+       <SignIn/>   
       </div>
   );
 }
