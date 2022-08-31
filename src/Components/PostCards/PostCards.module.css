@@ -1,0 +1,114 @@
+.post {
+    display: flex;
+}
+
+.largePost {
+    max-width: 736px;
+    height: 452px;
+    background-color: #F3F3F3;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+.mediumPost {
+    max-width: 352px;
+    height: 452px;
+    background-color: #F3F3F3;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.smallPost {
+    width: 354px;
+    height: 256px;
+    background-color: #F3F3F3;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.postCard {
+    display: flex;
+    flex-direction: column;
+}
+
+.postCardContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.mediumPost .postCardContent {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.postCardContentLeft {
+    display: flex;
+    flex-direction: column;
+}
+
+.mediumPost .postCardContentLeft {
+    margin-right: 32px;
+}
+
+.postCardDate {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.postCardTitle {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 28px;
+}
+
+.postCardText {
+    width: 448px;
+    height: 168px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+}
+
+.postCardContentImage img {
+    width: 100%;
+    height: 100%;
+}
+
+.largePost .postCardContentImage {
+    width: 256px;
+    height: 244px;
+}
+
+.mediumPost .postCardContentImage {
+    width: 352px;
+    height: 256px;
+    margin-bottom: 24px;
+}
+
+.smallPost .postCardContentImage {
+    width: 96px;
+    height: 96px;
+}
+
+.postCardContentIcons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.postCardContentIconsLeft {
+    display: flex;
+    justify-content: left;
+}
+
+.postCardContentIconsRight {
+    display: flex;
+    justify-content: right;
+}
