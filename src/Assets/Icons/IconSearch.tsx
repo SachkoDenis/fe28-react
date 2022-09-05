@@ -1,6 +1,6 @@
 import React from "react";
 
-export const SearchIcon = ({ width = "24", height = "24" }) => {
+export const IconSearch = ({ width = "24", height = "24" }) => {
   return (
     <svg
       width={width}

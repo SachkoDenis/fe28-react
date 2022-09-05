@@ -2,10 +2,7 @@ import React from "react";
 //@ts-ignore
 import styles from './PostCards.module.css'
 import classNames from 'classnames'
-import { IconBookmark } from "../../Assets/Icons/IconBookmark";
-import { IconMoreHorizontal } from "../../Assets/Icons/IconMoreHorizontal";
-import { IconThumbsDown } from "../../Assets/Icons/IconThumbsDown";
-import { IconThumbsUp } from "../../Assets/Icons/IconThumbsUp";
+import { IconBookmark, IconMoreHorizontal, IconThumbsDown, IconThumbsUp } from "../../Assets/Icons";
 
 
 export enum CardSize {
