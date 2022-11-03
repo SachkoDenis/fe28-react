@@ -1,47 +1,38 @@
-import React, {FC, useState } from 'react';
+import React, { useState } from 'react';
+import { Provider, useDispatch, useSelector} from 'react-redux'
 //@ts-ignore
-import styles from './App.module.css'
-import Button, {ButtonType} from './Components/Button';
-import classNames from 'classnames';
-import CardsList from './Components/CardsList';
-import SignIn from './Pages/SignIn';
-import SignUp from './Pages/SignUp';
-import UserName from './Components/UserName';
-import Header from './Components/Header';
-import Menu from './Components/Header/Menu';
-import Input from './Components/Input';
-import Footer from './Components/Footer';
 
-function App  ()  {
+import styles from './App.module.css';
+import ThemeProvider from './Context/ThemeContext/Provider';
+import Router from './Pages/Router';
+import store from './Redux/store';
+import { changeTheme } from './Redux/reducers/themeReducer';
+import themeSelectors from './Redux/selectors/themeSelectors';
+
+
+const App = () => {
   const [value, setValue] = useState<string>("");
   const onChange = (inputValue: string) => {
     setValue(inputValue);
   };
-  const [isOpened, setOpened] = useState(false);
+  const theme = useSelector(themeSelectors.getTheme)
+  const dispatch = useDispatch();
+  const onChangeTheme = ( ) => {
+    dispatch(changeTheme())
+  }
   return (
-    <div className={styles.app}>
-       <Header
-          onClick={() => setOpened(!isOpened)}
-          isOpened={isOpened}
-          input={
-            isOpened && (
-              <Input
-                placeholder={"Placeholder"}
-                onChange={onChange}
-                value={value}
-              />
-            )
-          }
-       />
-      {isOpened && <Menu />}
-
-
-       <SignUp/>  
-       <SignIn/>   
-
-       <Footer/>
-      </div>
-  );
+    <ThemeProvider theme={theme} onChangeTheme={onChangeTheme}>
+      <Router/>
+    </ThemeProvider>
+  )
 }
 
-export default App;
+const AppWithStore = () => {
+  return (
+    <Provider store={store}>
+      <App/>
+    </Provider>
+  )
+}
+
+export default AppWithStore;

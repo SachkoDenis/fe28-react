@@ -1,0 +1,102 @@
+.singlePost {
+    display: flex;
+    flex-direction: column;
+    width: 1120px;
+    border-bottom: 1px solid #dadada;
+    padding-bottom: 72px;
+}
+
+.postHeader {
+    display: flex;
+    flex-direction: column;
+}
+
+.postHeaderNumber {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    cursor: pointer;
+    margin-bottom: 32px;
+}
+
+.postHeaderNumber span {
+    color: #8d8e97;
+}
+
+.postTitle {
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 80px;
+    margin-bottom: 48px;
+}
+
+.postImg {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    overflow: hidden;
+}
+
+.postImg img {
+    width: 100%;
+    height: 100%;
+}
+
+.postText {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 32px;
+    margin-bottom: 48px;
+}
+
+.postIcons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.leftIcons {
+    display: flex;
+    flex-direction: row;
+}
+
+.leftIcons :first-child {
+    margin-right: 5px;
+}
+
+.leftIcons div {
+    width: 88px;
+    height: 56px;
+    padding: 15px 32px;
+    background-color: #e8e8e8;
+    cursor: pointer;
+}
+
+.rightIcons {
+    width: 237px;
+    padding: 15px 32px;
+    background-color: #e8e8e8;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+}
+
+.rightIcons div {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    color: #313037;
+}
+
+.rightIcons :first-child {
+    margin-right: 10px;
+}
+
+.darkContainer {
+    color: white;
+}
+
+.leftIcons,
+.rightIcons {
+    color: #8d8e97;
+}

@@ -1,49 +1,83 @@
-.button {
-    width: 132px;
-    height: 56px;
+.primary {
+    background: rgba(34, 49, 170, 1);
+    padding: 32px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
 }
 
-.primary {
-    padding: 12px 48px;
-    border-radius: 24px;
-    background-color: #2231AA;
-    box-shadow: 0px 4px 10px rgba(135, 167, 171, 0.5);
-    font-size: 14px;
-    color: white;
-    font-weight: 500;
-    text-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.15);
-    outline: none;
+.primary:hover {
+    background: rgba(83, 96, 205, 1);
     cursor: pointer;
+}
+
+.primary:disabled {
+    background: rgba(232, 232, 232, 1);
+    color: rgba(141, 142, 151, 1);
+    border: 1px solid rgba(255, 255, 255, 0.568);
+    opacity: 0.7;
+    cursor: default;
 }
 
 .secondary {
-    padding: 12px 48px;
-    border-radius: 24px;
-    background-color: #DADADA;
-    box-shadow: 0px 4px 10px rgba(135, 167, 171, 0.5);
-    font-size: 14px;
-    color: #313037;
-    font-weight: 500;
-    text-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.15);
-    outline: none;
+    background: rgba(232, 232, 232, 1);
+    padding: 32px 16px;
+    width: 132px;
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(49, 48, 55, 1)rgba(232, 232, 232, 1);
+    font-size: 18px;
+    border: none;
+    font-weight: 600;
+    margin: 10px;
+}
+
+.secondary:hover {
+    background: rgba(218, 218, 218, 1);
     cursor: pointer;
+}
+
+.secondary:disabled {
+    background: rgba(232, 232, 232, 1);
+    color: rgba(141, 142, 151, 1);
+    border: 1px solid rgba(255, 255, 255, 0.568);
+    opacity: 0.7;
+    cursor: default;
 }
 
 .error {
-    padding: 12px 48px;
-    border-radius: 24px;
-    background-color: #f3f3f3;
-    box-shadow: 0px 4px 10px rgba(135, 167, 171, 0.5);
-    font-size: 14px;
-    color: #FD3419;
-    font-weight: 500;
-    text-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.15);
-    outline: none;
+    background: transparent;
+    padding: 32px 16px;
+    border: none;
+    width: 132px;
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(253, 52, 25, 1);
+    font-size: 20px;
+    font-weight: 600;
+    margin: 10px;
+}
+
+.error:hover {
+    border: 1px solid rgba(218, 218, 218, 1);
     cursor: pointer;
 }
 
-.disabled {
-    background-color: #e8e8e8;
-    color: #8D8E97;
-    pointer-events: none;
+.error:disabled {
+    color: rgba(141, 142, 151, 1);
+    border: 1px solid rgba(255, 255, 255, 0.568);
+    opacity: 0.7;
+    cursor: default;
+}
+
+.ButtonSignUp {
+    width: 544px;
 }

@@ -1,0 +1,19 @@
+.app {
+    background: rgba(243, 243, 243, 1);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.darkContainer {
+    background-color: #313037;
+}
+
+.modalActive {
+    background: rgba(38, 34, 47, 0.5);
+    position: relative;
+    z-index: 3;
+}

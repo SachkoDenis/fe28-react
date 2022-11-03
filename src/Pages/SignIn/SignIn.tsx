@@ -1,10 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { FC, useState, useEffect } from "react";
+import styles from './SignIn.module.css'
 
+//@ts-ignore
+
+
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import Input from "../../Components/Input";
+import Title from "../../Components/Title";
 import Label from "../../Components/Label";
 import Button, { ButtonType } from "../../Components/Button";
-//@ts-ignore
-import styles from "./SignIn.module.css";
+import { useThemeContext, Theme } from "../../Context/ThemeContext/Context";
+import { PathNames } from "../Router";
+import { authUser } from "../../Redux/reducers/authReducers";
+import classNames from "classnames";
+
 
 const validateEmail = (email: string) => {
   return String(email)
@@ -15,6 +25,7 @@ const validateEmail = (email: string) => {
 };
 
 const SignIn = () => {
+  const dispatch = useDispatch;
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
   const [emailTouched, setEmailTouched] = useState(false);
@@ -22,6 +33,8 @@ const SignIn = () => {
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [passwordTouched, setPasswordTouched] = useState(false);
+
+  const {theme} = useThemeContext();
 
   useEffect(() => {
     if (emailTouched && !validateEmail(email)) {
@@ -47,46 +60,73 @@ const SignIn = () => {
     setPasswordTouched(true);
   };
 
-  return (
-    <div className={styles.container}>
-      <div>
-        <div>Back to home</div>
-        <div>Sign Up</div>
-      </div>
+  const navigate = useNavigate();
 
+  const onBackHomeClick = () => {
+    navigate(PathNames.Home)
+  };
+
+  const onSignIn = () => {
+    dispatch(authUser({ email, password }));
+  };
+  
+
+  return (
+    <div
+      className={classNames(styles.container, {
+        [styles.darkContainer]: theme === Theme.Dark
+      })}
+    >
+      <div className={styles.headForm}>
+        <div className={styles.backHomeBtn} onClick={onBackHomeClick}>
+          Back to Home
+        </div>
+        <Title title={"Sign In"} />
+      </div>
       <div className={styles.formContainer}>
         <div className={styles.inputContainer}>
-          <Label title={'Email'} />
+          <Label title={"Email"} />
           <Input
-            value={email}
+            placeholder={"Your email"}
             onChange={setEmail}
-            placeholder={'Your email'}
             onBlur={onBlurEmail}
+            value={email}
             error={!!emailError}
           />
           {emailTouched && emailError && <div>{emailError}</div>}
         </div>
+
         <div className={styles.inputContainer}>
-          <Label title={'Password'} />
+          <Label title={"Password"} />
           <Input
-            value={password}
+            placeholder={"Your password"}
             onChange={setPassword}
-            placeholder={'Your password'}
             onBlur={onBlurPassword}
+            value={password}
             error={!!passwordError}
           />
-          {passwordTouched && passwordError && <div>{passwordError}</div>}
+          {passwordTouched && passwordError && (
+            <div className={classNames(styles.passwordError)}>
+              {passwordError}
+            </div>
+          )}
+          <div className={classNames(styles.forgotPassword)}>
+            Forgot password?
+          </div>
         </div>
+
         <div>
           <Button
             type={ButtonType.Primary}
-            title={'Sign In'}
-            onClick={() => {}}
-            className={styles.signUpButton}
+            title={"Sign In"}
+            onClick={onSignIn}
+            className={styles.signInBtn}
+            disabled={false}
           />
-          <div>
-            Don’t have an account? <span>Sign Up</span>
-          </div>
+        </div>
+
+        <div className={styles.haveAccount}>
+          Don’t have an account? <Link to={PathNames.SignUp}>Sign Up</Link>
         </div>
       </div>
     </div>

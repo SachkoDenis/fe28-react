@@ -12,9 +12,23 @@ import { ButtonClassnamesType, ButtonType, ButtonPropsType} from './types';
   }
   
   
-  const Button: FC<ButtonPropsType>= ({title, onClick, className, type, disabled}) => {
+  const Button: FC<ButtonPropsType>= ({
+    title,
+    onClick, 
+    className,
+    type,
+    disabled
+  }) => {
   
-    return <div onClick={onClick} className={`${styles.button} ${BUTTON_TYPE_CLASSNAMES[type]} ${disabled ? styles.disabled:''}`}>{title}</div>
+    return ( 
+    <button
+      onClick={onClick}
+      className={`${BUTTON_TYPE_CLASSNAMES[type]} ${className || ""}`} 
+      disabled={disabled}
+      >
+      {title}
+      </button>
+      );
   }
 
   export default Button

@@ -9,7 +9,7 @@ export enum ButtonType {
 export type ButtonPropsType = {
     title:string;
     type:ButtonType;
-    onClick:() => void;
+    onClick?:() => void;
     className?:string;
     disabled?:boolean;
   }

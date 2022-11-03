@@ -1,88 +1,162 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Input from "../../Components/Input";
+import Title from "../../Components/Title";
 import Label from "../../Components/Label";
 import Button, { ButtonType } from "../../Components/Button";
 //@ts-ignore
+import classNames from "classnames";
 import styles from "./SignUp.module.css";
+import { useThemeContext, Theme } from "../../Context/ThemeContext/Context";
+import { PathNames } from "../Router";
+import { useDispatch } from "react-redux";
+import { createNewUser } from "../../Redux/reducers/authReducers";
+
+
+
+
+const validateEmail = (email: string) => {
+  return String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+};
+
 
 const SignUp = () => {
+  const dispatch = useDispatch();
+
   const [name, setName] = useState('');
+
   const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [emailTouched, setEmailTouched] = useState(false);
+
   const [password, setPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [passwordTouched, setPasswordTouched] = useState(false);
+
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [confirmPasswordError, setconfirmPasswordError] = useState('');
+  const [confirmPasswordTouched, setconfirmPasswordTouched] = useState(false);
+
+  const {theme} = useThemeContext();
+
+  useEffect(() => {
+    if (emailTouched && !validateEmail(email)) {
+      setEmailError('Set correct email');
+    } else {
+      setEmailError('');
+    }
+  }, [emailTouched, email]);
+
+  useEffect(() => {
+    if (passwordTouched && password.length < 8) {
+      setPasswordError('Enter more than 8 characters');
+    } else {
+      setPasswordError('');
+    }
+  }, [passwordTouched, password]);
+
+  useEffect(() => {
+    if (confirmPasswordTouched && confirmPassword.length < 8) {
+      setconfirmPasswordError ('enter more than 8 characters');
+    } else if (confirmPasswordTouched && confirmPassword != password) {
+      setconfirmPasswordError('Password does no match');
+    } else {
+      setconfirmPasswordError ('')
+    }
+  }, [confirmPasswordTouched, confirmPassword, password])
 
   const onBlurEmail = () => {
-    // email
-    // сделать функцию, которая проверяет правильно ли введен email, если нет, тогда сделать эррор
+    setEmailTouched(true)
   };
 
   const onBlurPassword = () => {
-    // password
-    // должен быть больше 8 символов
+    setPasswordTouched(true)
   };
 
   const onBlurConfirmPassword = () => {
-    // confirm password === password
-    // должен быть больше 8 символов
+    setconfirmPasswordTouched(true)
   };
 
-  return (
-    <div className={styles.container}>
-      <div>
-        <div>Back to home</div>
-        <div>Sign Up</div>
-      </div>
+  const onSignUp = () => {
+    dispatch(createNewUser({username: name, email, password}))
+  };
 
+  const navigate = useNavigate();
+
+  const onBackHomeClick = () => {
+    navigate(PathNames.Home)
+  };
+
+
+  return (
+    <div
+      className={classNames(styles.container, {
+        [styles.darkContainer]: theme === Theme.Dark
+      })}
+    >
+      <div className={styles.headForm}>
+        <div className={styles.backHomeBtn} onClick={onBackHomeClick}>Back to Home</div>
+        <Title title={"Sign Up"} />
+      </div>
       <div className={styles.formContainer}>
         <div className={styles.inputContainer}>
-          <Label title={'Name'} />
-          <Input value={name} onChange={setName} placeholder={'Your name'} />
+          <Label title={"Name"} />
+          <Input placeholder={"Your name"} onChange={setName} value={name} />
         </div>
 
         <div className={styles.inputContainer}>
-          <Label title={'Email'} />
+          <Label title={"Email"} />
           <Input
-            value={email}
+            placeholder={"Your email"}
             onChange={setEmail}
-            placeholder={'Your email'}
             onBlur={onBlurEmail}
+            value={email}
+            error={!!emailError}
           />
-          {/*{emailError && <div></div>}*/}
+          {emailTouched && emailError && <div>{emailError}</div>}
         </div>
 
         <div className={styles.inputContainer}>
-          <Label title={'Password'} />
+          <Label title={"Password"} />
           <Input
-            value={password}
+            placeholder={"Your password"}
             onChange={setPassword}
-            placeholder={'Your password'}
             onBlur={onBlurPassword}
+            value={password}
+            error={!!passwordError}
           />
-          {/*{passwordError && <div></div>}*/}
+          {passwordTouched && passwordError && <div>{passwordError}</div>}
         </div>
 
         <div className={styles.inputContainer}>
-          <Label title={'Confirm Password'} />
+          <Label title={"Confirm password"} />
           <Input
-            value={confirmPassword}
+            placeholder={"Confirm password"}
             onChange={setConfirmPassword}
-            placeholder={'Confirm password'}
             onBlur={onBlurConfirmPassword}
+            value={confirmPassword}
+            error={!!confirmPasswordError}
           />
-          {/*{confirmPasswordError && <div></div>}*/}
+          {confirmPasswordTouched && confirmPasswordError && (
+            <div>{confirmPasswordError}</div>
+          )}
         </div>
-
         <div>
           <Button
             type={ButtonType.Primary}
-            title={'Sign up'}
-            onClick={() => {}}
-            className={styles.signUpButton}
+            title={"Sign Up"}
+            onClick={onSignUp}
+            className={styles.signUpBtn}
+            disabled={false}
           />
-          <div>
-            Already have an account? <span>Sign In</span>
-          </div>
+        </div>
+
+        <div className={styles.haveAccount}>
+          Already have an account? <Link to={PathNames.SignIn}>Sign In</Link>
         </div>
       </div>
     </div>

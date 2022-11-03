@@ -5,6 +5,9 @@
     border: 2px solid transparent;
     outline: none;
     color: #313037;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 400;
 }
 
 .input:focus,
@@ -12,12 +15,8 @@
     border-color: #dadada;
 }
 
-.input:active {
-    color: black;
-}
-
-.disabled {
-    background-color: #e8e8e8;
+.input:disabled {
+    background: #e8e8e8;
     color: #8d8e97;
 }
 

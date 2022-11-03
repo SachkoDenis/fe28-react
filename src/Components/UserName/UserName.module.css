@@ -1,23 +1,29 @@
 .userName {
-    width: 235px;
-    background-color: #2231aa;
+    width: 231px;
+    height: 84px;
+    background-color: rgb(34, 49, 170);
     display: flex;
     justify-content: center;
-    text-align: center;
     align-items: center;
+    padding: 18px 30px;
+}
+
+.userName p {
     color: #fff;
     font-size: 16px;
     font-weight: 600;
+    margin: auto;
 }
 
-.userName:before {
-    content: 'AM';
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.userNameInitials {
     width: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 16px;
     height: 48px;
-    background-color: #5360cd;
+    background-color: rgb(83, 96, 205);
     margin-right: 16px;
     font-size: 16px;
     font-weight: 600;
